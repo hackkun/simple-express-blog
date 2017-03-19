@@ -1,0 +1,9 @@
+body {
+  padding-top: 80px;
+}
+.container {
+  width: 900px;
+}
+.navbar-right {
+  margin-right: 20px;
+}

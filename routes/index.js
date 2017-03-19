@@ -6,7 +6,7 @@ const signupRouter = require('./signup')
 module.exports = app => {
 
   app.get('/', (req, res) => {
-    res.send('hello, 我是首页')
+    res.render('index')
   })
 
   app.use('/signup', signupRouter)
