@@ -11,14 +11,23 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ['men', 'women']
   },
-  'creat_at': {
+  'create_at': {
     type: Date,
     default: Date.now()
   }
 })
 
-const UserModel = mongoose.model('user', userSchema)
+userSchema.statics.isExistName = function (user) {
+  return new Promise((resolve, reject) => {
+    this.model('users').findOne({ user: user }, (err, result) => {
+      if (err) return
+      resolve(result)
+    })
+  })
+}
 
-module.exports = UserModel
+const userModel = mongoose.model('users', userSchema)
+
+module.exports = userModel
 
 

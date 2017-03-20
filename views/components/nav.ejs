@@ -1,7 +1,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <a class="navbar-brand" href="/">虾米博客</a>
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="">注册</a></li>
-    <li><a href="">登录</a></li>
+    <% if(user) { %>
+      <li><a href="javascript:;"><%= user %></a></li>
+      <li><a href="/posts/create">发布博客</a></li>
+      <li><a href="/signout">退出</a></li>
+    <% }else{ %>
+      <li><a href="/signup">注册</a></li>
+      <li><a href="/signin">登录</a></li>
+    <% } %>
   </ul>
 </nav>
