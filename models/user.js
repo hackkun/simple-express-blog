@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   pwd: String,
-  avatar: String,
   sex: {
     type: String,
     enum: ['men', 'women']
@@ -17,11 +16,15 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-userSchema.statics.isExistName = function (user) {
+userSchema.statics.isExistUser = function (user) {
   return new Promise((resolve, reject) => {
     this.model('users').findOne({ user: user }, (err, result) => {
       if (err) return
-      resolve(result)
+      if (result) {
+        resolve(result)
+      } else {
+        resolve(false)
+      }
     })
   })
 }

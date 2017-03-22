@@ -50,6 +50,7 @@ app.use((req, res, next) => {
 // 路由
 routes(app)
 
-app.listen(config.port, () => {
-  console.log(`${pkg.name} listening on port ${config.port}`)
+const port = process.env.PORT || config.port
+app.listen(port, () => {
+  console.log(`${pkg.name} listening on port ${port}`)
 })
